@@ -1,0 +1,38 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.5.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+}
+
+group = 'com.aninfo'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	testImplementation 'io.projectreactor:reactor-test'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+	compile group: 'io.springfox', name: 'springfox-swagger2', version: '3.0.0'
+	compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.8.0'
+	compile group: 'com.h2database', name: 'h2', version: '1.4.200'
+	//compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.19'
+
+	testImplementation("info.cukes:cucumber-java:1.2.5")
+	testImplementation("info.cukes:cucumber-junit:1.2.5")
+	testImplementation("info.cukes:cucumber-spring:1.2.5")
+	testImplementation("org.junit.jupiter:junit-jupiter-api:5.3.1")
+	testRuntime("org.junit.jupiter:junit-jupiter-engine:5.3.1")
+
+}
+
+test {
+	useJUnitPlatform()
+}
